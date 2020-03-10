@@ -1,0 +1,11 @@
+/*  my-header...
+***********************/
+@mixin b($block) {
+    $namespan : "my";
+    $B : $namespan + "-" + $block;
+    @at-root{
+        .#{$B}{
+            @content;
+        }
+    }
+}

@@ -1,0 +1,141 @@
+@import '@/assets/mixins/utils.scss';
+
+.m-menu{
+    position: relative;
+    top: 0px;
+    width: 230px;
+    height: 480px;
+    z-index: 30;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    margin-top: -45px;
+    & dl{
+        margin: 0px;
+        & .title{
+            height: 45px;
+            line-height: 45px;
+            padding-left: 15px;
+            font-size: 16px;
+            color: #222222;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        & dd {
+            position: relative;
+            font-size: 13px;
+            color: #646464;
+            line-height: 20px;
+            padding: 3px;
+            padding-left: 15px;
+            margin: 0;
+            cursor: pointer;
+            & a{
+                text-decoration: none;
+                color: #646464;
+
+            }
+            &:hover{
+                background: rgba(255,150,0,0.08);
+                color: #222222;
+                i.icon-right{
+                    color: #222222;
+                }
+                & a{
+                    color: #222;
+                }
+            }
+            & i{
+                font-family: 'iconfont';
+                font-size: 16px;
+                padding-right: 7px;
+                font-weight: 400;
+                font-style: normal;
+                &.icon-right{
+                    position: absolute;
+                    right: 0px;
+                    color : #b1b1b1;
+                }
+
+                // 字体图标
+                $typeMap : (
+                    "icon-meishi" : #FF8200,
+                    "icon-waimai" : #FFB500,
+                    "icon-jiudian" : #9B5E3E,
+                    "icon-minsu" : #FFB500,
+                    "icon-maoyan" : #FF3D00,
+                    "icon-jipiao" : #03A9F4,
+                    "icon-xiuxian" : #00BF96,
+                    "icon-shenghuo" : #00BF96,
+                    "icon-liren" : #FF4081,
+                    "icon-jiehun" : #FF4081,
+                    "icon-qinzi" : #FF4081,
+                    "icon-yundong" : #03A9F4,
+                    "icon-jiazhuang" : #00BF96,
+                    "icon-xuexi" : #00BF96,
+                    "icon-yiliao" : #03A9F4,
+                    "icon-jiuba" : #00BF96,
+                );
+
+                
+                @each $type, $color in $typeMap{
+                    @include utils-font-color($type, $color);
+                }
+
+            }
+        }
+    }
+
+    & .detail{
+        position: absolute;
+        width: 400px;
+        height: 428px;
+        right: -402px;
+        top: 50px;
+        background-color: #fff;
+        box-sizing: border-box;
+        
+        & dl{
+            padding: 15px 32px;
+            & dt{
+                font-size: 16px;
+                font-weight: 500;
+                color: #222;
+                cursor: pointer;
+                padding-left: 8px;
+                padding-top: 15px;
+                border-bottom: 1px solid #e5e5e5;
+                padding: 0px 0px 7px 0px;
+                margin-bottom: 10px;
+                & span{
+                    position: absolute;
+                    font-size: 12px;
+                    right:30px;
+                    color: #999999;
+                    & i{
+                        font-family: "iconfont";
+                        font-style: normal;
+                        top: 10px;
+                    }
+                }
+            }
+
+            & dd{
+                font-size: 12px;
+                color: #999;
+                line-height: 15px;
+                display: inline-block;
+                padding: 0px 15px 3px 0px;
+                background-color: #fff;
+                & a{
+                    color: #999;
+                }
+                &:hover{
+                    & a{
+                        color : #ffc300;
+                    }
+                }
+            }
+        }
+        
+    }
+}

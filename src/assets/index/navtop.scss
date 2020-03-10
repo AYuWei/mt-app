@@ -1,0 +1,42 @@
+.navtop{
+    height: 45px;
+    margin-top: -45px;
+    line-height: 30px;
+    text-align: center;
+
+    & ul{
+        margin: 0px;
+        list-style: none;
+        & li {
+            float: left;
+            margin: 0px 20px;
+            & a{
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 16px;
+                color: #222;
+                &:hover{
+                    &.mt{
+                        color: #fbc700;
+                    }
+                    &.my{
+                        color: #ed1e24;
+                    }
+                    &.jd{
+                        color: #f04d4e;
+                    }
+                    &.ms{
+                        color:#FDC411; 
+                    }
+                    &.rz{
+                        color: #FE8C00;
+                    }
+                    &.gy{
+                        color: #f04d4e;;
+                    }
+                }
+            }
+           
+        }
+    }
+}

@@ -1,0 +1,48 @@
+.navbottom{
+    width: 100%;
+    height: 177px;
+    margin-top:9px;
+    & .bottom-left{
+        height: 170px;
+        width: 270px;
+        & img{
+            width: 270px;
+            height: 100%;
+        }
+    }
+    & .bottom-content{
+        margin-left: 5px;
+        height: 170px;
+        width: 270px;
+        & img{
+            width: 270px;
+            height: 100%;
+        }
+    }
+    & .bottom-right{
+        margin-left: 5px;
+        height: 170px;
+        width: 150px;
+        & img{
+            width: 150px;
+            height: 100%;
+        }
+    }
+    & .erwei{
+        position: absolute;
+        display: inline-block;
+        margin-left: 10px;
+        height: 177px;
+        width: 227px;
+        right: 0;
+        box-sizing: border-box;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        text-align: center;
+        padding: 15px;
+        & img{
+            width: 95px;
+            height: 95px;
+        }
+    }
+}

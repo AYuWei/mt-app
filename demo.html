@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+     
+    1. vue是如何实现数据的双向绑定的？ 
+    <div>
+            <input type="text" id="text">
+            <p id="show"></p>
+        </div>
+        <script>
+            var obj = {};
+            Object.defineProperty(obj, 'text', {
+                get: () => {
+                    return obj['text'];
+                },
+                set: (val) => {
+                    show.innerText = val;
+                    text.value = val;
+                }
+            }); 
+            text.oninput = (e) => {
+                obj.text = e.target.value;
+            }
+
+            // 新版vue用了Proxy
+        
+        </script> 
+        2. Proxy 与 Object.defineProperty 优劣对比
+            Proxy 的优势如下:
+            
+            Proxy 可以直接监听对象而非属性；
+            Proxy 可以直接监听数组的变化；
+            Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的；
+            Proxy 返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改；
+            Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利；
+            
+            Object.defineProperty 的优势如下:
+            
+            兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平，因此 Vue 的作者才声明需要等到下个大版本( 3.0 )才能用 Proxy 重写。
+                 
+    
+    3. vue.directives 自定义指令 可以用来实现一些vue实现不了的功能  例如 计数功能  拖拽功能  给document绑定一些事件的时候
+        Vue.directives()
+    4. vue.filter 过滤器   可以在不改变数据的前提下修改数据渲染的样式  10,000,000
+        Vue.filter('toMoney', (value, time) => {
+            console.log(value, time)
+            return 'xxx'
+        });
+        使用: {{ money | toMoney(2)}}
+    5. vue生命周期   创建前后   渲染前后（载入前后）  修改前后   销毁前后  
+    6. vue的组件与组件之间的数据交流
+        父子组件如何交流    
+        父 --》 子<child :a=a @change="change"> 
+                （1）. 属性：props  
+                （2）. vm.$attrs子组件获取未注册的属性 
+                （3）. v-bind="$attrs"  子组件传递给孙子组件
+                （4）.  this.$parent   this.$children  麻烦效率也比较低 不推荐
+                 
+        <div id="app">
+            <my-content :title="tilte" :content="content" ></my-content>
+        </div>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    content: 'content',
+                    title: 'title'
+                },
+                components: {
+                    myContent: {
+                        props: ['title'],
+                        created() {
+                            console.log(this.$attrs);
+                        },
+                        inheritAttrs: false,
+                        template: `<div> <h3>{{title}}</h3></div>
+                                <my-p v-bind="$attrs"> </my-p></div>`,
+                        components: {
+                            myP: {
+                                props: ['content'],
+                                template: `<p>{{ content }}</p>`
+                            }
+                        }
+                    }
+                }
+            })
+        </script>
+
+        (5). provide  inject
+            <div id="app">
+                <my-content ></my-content>
+            </div>
+            <script>
+                const vm = new Vue({
+                    el: '#app',
+                    provide: {
+                        content: 'content',
+                        title: 'title'
+                    },
+                    components: {
+                        myContent: {
+                            inject: ['title'],
+                            created() {
+                                console.log(this.$attrs);
+                            },
+                            inheritAttrs: false,
+                            template: `<div> <h3>{{title}}</h3></div>
+                                    <my-p> </my-p></div>`,
+                            components: {
+                                myP: {
+                                    inject: ['content'],
+                                    template: `<p>{{ content }}</p>`
+                                }
+                            }
+                        }
+                    }
+                })
+            </script>
+        子 ---》 父  (1)$emit('change', )   
+                    (2) ref 引用
+                    (3) $listener 所有绑定事件的函数的集合
+            <div id="app">
+                <my-cmp ref="cmp"></my-cmp>
+            </div>
+            <script>
+                const vm = new Vue({
+                    el: '#app',
+                    mounted() {
+                        console.log(this.$refs.cmp.msg);
+                    },
+                    components: {
+                        myCmp: {
+                            data() {
+                                return {
+                                    msg: 'hello world'
+                                }
+                            }
+                        }
+                    },
+                    methods: {
+                        cmpFunc() {
+                            console.log('cmp')
+                        }
+                    },
+                    template:  `<div></div>`
+                })
+            </script>
+
+        子组件与子组件如何通信    vuex
+                            event bus 事件总线
+                                Vue.prototype.bus = new Vue();
+
+
+        
+
+
+
+    7. 路由 vue-router  ---> mode : hash   history
+        
+    8. 路由守卫
+
+
+    9. 说说你对 SPA 单页面的理解，它的优缺点分别是什么？
+    SPA（ single-page application ）仅在 Web 页面初始化时加载相应的 HTML、JavaScript 和 CSS。一旦页面加载完成，SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内容的变换，UI 与用户的交互，避免页面的重新加载。
+    优点：
+    
+    用户体验好、快，内容的改变不需要重新加载整个页面，避免了不必要的跳转和重复渲染；
+    基于上面一点，SPA 相对对服务器压力小；
+    前后端职责分离，架构清晰，前端进行交互逻辑，后端负责数据处理；
+    
+    缺点：
+    
+    初次加载耗时多：为实现单页 Web 应用功能及显示效果，需要在加载页面的时候将 JavaScript、CSS 统一加载，部分页面按需加载；
+    前进后退路由管理：由于单页应用在一个页面中显示所有的内容，所以不能使用浏览器的前进后退功能，所有的页面切换需要自己建立堆栈管理；
+    SEO 难度较大：由于所有的内容都在一个页面中动态替换显示，所以在 SEO 上其有着天然的弱势。
+   
+
+    10. 指令v-el的使用有时候我们想就像使用jquery那样去访问一个元素，
+        此时就可以使用v-el指令，去给这个元素注册一个索引，
+        方便通过所属实例的$el访问这个元素。
+        注意HTML不区分大小写，所以v-el:someEl将转换为全小写。
+        可以用v-el:some-el然后设置this.$el.someEl。
+    示例
+        <span v-el:msg>hello</span>
+        <span v-el:other-msg>world</span>
+        this.$els.msg.textContent //-> "hello"
+        this.$els.otherMsg.textContent// -> "world"
+        this.$els.msg//-><span>hello</span>
+
+
+    侦听器（watch）的应用是在 当数据变化的时候 要执行一些功能 
+
+    计算属性（computed） 的应用是在 想要在页面当中渲染一个数据  这个数据是通过计算得到的
+
+
+    11. computed 和  methods区别
+    
+
+    12. v-if 为true 的时候才会加载
+        v-show  页面初始就会加载
+        
+ 
+</body>
+</html>

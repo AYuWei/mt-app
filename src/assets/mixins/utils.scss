@@ -1,0 +1,58 @@
+@import "@/assets/common/var.scss";
+
+@mixin utils-hover {
+    $selector : &;
+    @at-root{
+        #{$selector}:hover{
+            color: $--color-font-hover;
+        }
+    }
+}
+@mixin utils-margin-0 {
+    $selector : &;
+    @at-root{
+        #{$selector}{
+           margin: 0px;
+        }
+    }
+}
+
+@mixin utils-box-sizing {
+    $selector : &;
+    @at-root{
+        #{$selector}{
+            box-sizing: border-box;
+        }
+    }
+}
+
+@mixin utils-wlp($w,$l,$p) {
+    $selector : &;
+    @at-root{
+        #{$selector} {
+            width: $w;
+            left: $l;
+            position: $p;
+        }
+    }
+}
+@mixin utils-wrp($w,$r,$p) {
+    $selector : &;
+    @at-root{
+        #{$selector} {
+            width: $w;
+            right: $r;
+            position: $p;
+        }
+    }
+}
+
+@mixin  utils-font-color($name, $color) {
+    $selector : &;
+    $selectorname : #{$name};
+    @at-root{
+        #{$selector}.#{$selectorname}{
+            color: $color;
+        }
+    }
+}

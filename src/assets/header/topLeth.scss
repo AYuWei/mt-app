@@ -1,0 +1,49 @@
+@import "@/assets/common/var.scss";
+@import "@/assets/mixins/mixins.scss";
+@import "@/assets/mixins/utils.scss";
+
+@include b(topLeft){
+    font-size: 12px;
+    padding: 0 2px;
+    color:$--color-font-9;
+    & i{
+        padding: 0;
+        cursor: pointer;
+    }
+    & .current-city{
+        color: $--color-font-6;
+    }
+    & a{
+        text-decoration: none;
+        &.change-city{
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            padding: 0px 1px;
+            color: $--color-font-6;
+            @include utils-hover;
+        }
+    }
+    & div{
+        display: inline-block;
+        &.near-citys{
+            color: $--color-font-9;
+
+            & a{
+                color: $--color-font-9;
+                margin: 0 2px;
+                @include utils-hover;
+            }
+        }
+        &.user-entry{
+            & a{
+                padding: 0 3px;
+                color: $--color-font-9;
+                &.user-up{
+                    padding-left: 20px;
+                    color: $--color-font-hover;
+                }
+                @include utils-hover;
+            }
+        }
+    }
+}

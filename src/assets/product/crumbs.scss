@@ -1,0 +1,16 @@
+.crumbs{
+    font-size: 13px;
+    & .el-breadcrumb{
+        height: 40px;
+        line-height: 40px;
+        text-align: left;
+        & .breadcrumb-item{
+            & span{
+                 cursor: pointer !important;
+                &:hover{
+                    color: #ffc300 !important;
+                }
+            }
+         }
+    }
+}

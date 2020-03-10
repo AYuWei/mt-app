@@ -1,0 +1,11 @@
+.goodsList{
+    width: 1190px;
+
+    & .filter-box{
+        z-index: 44;
+    }
+    .common-wrapper{
+        padding: 10px;
+        border-radius: 2px;
+    }
+}

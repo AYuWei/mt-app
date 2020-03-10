@@ -1,0 +1,179 @@
+.register{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    & .header-mini{
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        box-sizing: border-box;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 2px solid #e5e5e5;
+        & .wrapper{
+            position: relative;
+            width: 980px;
+            height: 100%;
+            margin: auto;
+            a{
+                display: inline-block;
+                width: 128px;
+                height: 36px;
+                background: url(http://s0.meituan.net/bs/file/?f=fe-sso-fs:build/assets/logo.6a89007.png) no-repeat;
+                background-size: contain;
+                padding-top: 30px;
+                box-sizing: border-box;
+                margin-top: 10px;
+                overflow: hidden;
+                position: absolute;
+            }
+            .login{
+                position: absolute;
+                right : 0px;
+                span{
+                    font-size: 14px;
+                    color: #666;
+                }
+                .el-button{
+                    padding: 5px 10px;
+                    border : none;
+                    background-color: #fec800;
+                }
+                
+            }
+        }
+    }
+
+    & .content{
+        width: 980px;
+        margin: auto;
+        margin-top: 50px;
+        & .el-form-item{
+            margin-bottom: 15px;
+            & .el-form-item__content{
+               width: 100%;
+                & .el-input{
+                    & input{
+                        width: 230px;
+                        &:focus{
+                            border-color: #fe8c00;
+                        }
+                    }
+                    & .el-input__suffix{
+                        position: relative;
+                        left: 3px;
+                    }
+                }
+                & .el-form-item__error{
+                    left: 255px;
+                    top: 9px;
+                }
+                & .el-button{
+                    background-image: linear-gradient(135deg,#FFD000 0,#FFBD00 100%);;
+                    border: none;
+                    cursor: not-allowed;
+                    &.button{
+                        cursor: pointer;
+                    }
+                }
+            }
+       }
+       & .pw-strength{
+           position: relative;
+             width: 228px;
+             background-color: #eee;
+             margin-top: 15px;
+             height: 20px;
+             line-height: 20px;
+             font-size: 12px;
+             & .bar{
+                //  position: absolute;
+                background-color: #eee;
+                 transform: width ;
+                 height: 20px;
+                 width : 228px;
+                 transition: all .4s linear;
+                 &.weak {
+                    width: 76px;
+                    background: #f76120;
+                  }
+                  &.normal {
+                    width: 152px;
+                    background: #ff8900;
+                  }
+                  &.strong {
+                    width: 227px;
+                    background: #5bab3c;
+                  }
+             }
+             & .letter{
+                 position: absolute;
+                 top:0px;
+                 width: 230px;
+                 height: 20px;
+                 & span{
+                    width: 76px;
+                    display: block;
+                    float: left;
+                    text-align: center;
+                    border: 1px solid #fff;
+                    box-sizing: border-box;
+                    font-size: 10px;
+                    background-color: transparent;
+                     color: #fff;
+                 }
+             }
+        }
+
+        & .xieyi{
+            padding-left: 100px;
+            height: 20px;
+            line-height: 20px;
+            .change{
+                position: relative;
+                width: 15px;
+                display: inline-block;
+                height: 15px;
+                vertical-align: middle;
+                box-sizing: border-box;
+                border: 2px solid #999;
+                cursor: pointer;
+                transition: all .7s initial;
+                &.add{
+                    border-color: #FFBD00;
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        display: inline-block;
+                        width: 7px;
+                        height: 7px;
+                        background-color: #FFBD00;
+                        left: 2px;
+                        top: 2px;
+                        bottom: 0px;
+                        right: 0px;
+                    }
+                }
+            }
+            a{
+                text-decoration: none;
+                color: #fe8c00;
+            }
+        }
+
+    }
+
+    & .footer-mini{
+        margin-top: 40px;
+        width: 100%;
+        border-top: 2px solid #e5e5e5;
+        text-align: center;
+        padding: 10px 0px;
+        span{
+            margin: 5px 0px;
+            font-size: 14px ;
+            color: #666;
+        }
+    }
+}

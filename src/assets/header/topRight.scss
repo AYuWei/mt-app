@@ -1,0 +1,139 @@
+@import "@/assets/mixins/mixins.scss";
+@import "@/assets/mixins/utils.scss";
+@import "@/assets/common/var.scss";
+
+@include b(topRight){
+    font-size: 12px;
+    text-align: right;
+    & ul{
+       position: absolute;
+       display: flex;
+       right: 0px;
+       z-index: 100;
+       @include utils-margin-0;
+       height:  $--header-height;
+       list-style-type: $--ul-list-style-type;
+       & li{
+           position: relative;
+           justify-items: right;
+            height: $--li-header-height;
+            width: 78px;
+            list-style: none;
+            display: inline-block;
+            @include utils-margin-0; 
+            border: 1px solid transparent;
+            @include utils-box-sizing;
+            text-align: center;
+            @include utils-hover;
+        
+            & a{
+                text-decoration: none;
+                color:  $--color-font-9;
+                @include utils-hover;
+            }
+
+            &.list{
+                &:hover::after{
+                    position: absolute;
+                    display: inline-block;
+                    content: "";
+                    top: 36px;
+                    left: -1px;
+                    width: 78px;
+                    height: 10px;
+                    background-color : $--background-color;
+                }
+                dl{
+                    display: none;
+                    margin: 0px;
+                    line-height: 30px;
+                    background-color: #fff;
+                    box-shadow: 1px 0px 6px $--box-shadow-color;
+                    dd{
+                        margin: 0px;
+                    }
+                }
+                &:hover{
+                    background-color: $--background-color;
+                    box-shadow: 1px 0px 6px $--box-shadow-color;
+
+                    > dl{
+                        display: block;
+                    }
+                    > .header-nav-site dl{
+                        display: block;
+                    }
+                }
+                
+            }
+            &.list.mt,&.list.gz{
+                position: relative;
+                white-space: nowrap;
+                text-align: center;
+                dl{
+                    @include utils-wlp(78px,-1px,absolute);
+                }
+            }
+            &.list.bd{
+               position: relative;
+               dl{
+                   @include utils-wrp(150px,-1px,absolute);
+               }
+            }
+            &.list .header-nav-site{
+                @include utils-wrp(1190px, -1px, absolute);
+                background-color: $--background-color;
+                display: flex;
+                box-shadow: 1px 0px 6px $--box-shadow-color;
+                
+                & dt{
+                    color: #000 !important;
+                }
+
+                & dl{
+                    box-shadow: none;
+                }
+                & .header-jiulv{
+                    width: 250px;
+                    padding: 10px 30px;
+                    text-align: center;
+                    & dd{
+                        width: 80px;
+                        & a{
+                            padding: 0px;
+                        }
+                    }
+                   
+                }
+                & .header-meishi{
+                    width: 170px;
+                    padding: 10px 30px 10px 0px;
+                    & dd{
+                        width: 70px;
+                        & a{
+                            padding: 0px;
+                        }
+                    }
+                }
+                & .header-dianying{
+                    width: 120px;
+                    padding: 10px 20px;
+                }
+                & .header-app{
+                    padding: 10px 20px;
+                    & a{
+                        padding: 10px;
+                        & img{
+                            width:60px ;
+                            height: 60px;
+                        }
+                    }
+                }
+                & dd{
+                    display: inline-block;
+                }
+            }
+        }
+    }
+   
+}

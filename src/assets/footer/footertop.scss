@@ -1,0 +1,28 @@
+ @import "@/assets/mixins/utils.scss";
+ .footer-top{
+     width: 100%;
+     box-sizing: border-box;
+     border-top: 1px solid rgb(207, 207, 207) ;
+     border-bottom:1px solid rgb(207, 207, 207) ;
+     padding: 30px;
+    display: flex;
+     & .footer-column{
+         width: 240px;
+         line-height: 2;
+         & dl {
+             & dt{
+                 font-size: 14px;
+             }
+             & dd{
+                 font-size: 12px;
+                 cursor: pointer;
+                 color: #666;
+                 margin: 0px;
+                 @include utils-hover;
+             }
+         }
+     }
+   
+ }
+
+ 
