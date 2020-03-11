@@ -34,6 +34,7 @@ export default {
     height: 196px !important;
     padding-bottom: 44px;
     background-color: #f8f8f8;
+    box-shadow: 0px 0px 4px #666;
   }
   & .el-main {
     margin: auto;

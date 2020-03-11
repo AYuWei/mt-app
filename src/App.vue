@@ -15,5 +15,8 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: #f8f8f8 !important;
+  & .el-container {
+    background-color: #f8f8f8;
+  }
 }
 </style>
